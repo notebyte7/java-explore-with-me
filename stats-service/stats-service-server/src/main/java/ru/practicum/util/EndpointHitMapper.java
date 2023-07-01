@@ -1,10 +1,12 @@
-package ru.practicum.mapper;
+package ru.practicum.util;
 
 import ru.practicum.EndpointHitDto;
 import ru.practicum.model.EndpointHit;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+
+import static ru.practicum.util.Format.DATA_FORMAT;
 
 public class EndpointHitMapper {
 
@@ -13,7 +15,7 @@ public class EndpointHitMapper {
                 endpointHitDto.getApp(),
                 endpointHitDto.getUri(),
                 endpointHitDto.getIp(),
-                LocalDateTime.parse(endpointHitDto.getTimestamp(), DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"))
+                LocalDateTime.parse(endpointHitDto.getTimestamp(), DateTimeFormatter.ofPattern(DATA_FORMAT))
         );
     }
 
@@ -22,7 +24,7 @@ public class EndpointHitMapper {
               endpointHit.getApp(),
               endpointHit.getUri(),
               endpointHit.getIp(),
-              endpointHit.getTimestamp().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"))
+              endpointHit.getTimestamp().format(DateTimeFormatter.ofPattern(DATA_FORMAT))
         );
     }
 }

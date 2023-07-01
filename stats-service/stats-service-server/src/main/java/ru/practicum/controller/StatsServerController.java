@@ -12,6 +12,8 @@ import javax.validation.Valid;
 import java.time.LocalDateTime;
 import java.util.Collection;
 
+import static ru.practicum.util.Format.DATA_FORMAT;
+
 @RestController
 @RequiredArgsConstructor
 public class StatsServerController {
@@ -24,8 +26,8 @@ public class StatsServerController {
     }
 
     @GetMapping(value = "/stats")
-    public Collection<ViewStatsDto> getViewStats(@RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss") LocalDateTime start,
-                                                 @RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss") LocalDateTime end,
+    public Collection<ViewStatsDto> getViewStats(@RequestParam @DateTimeFormat(pattern = DATA_FORMAT) LocalDateTime start,
+                                                 @RequestParam @DateTimeFormat(pattern = DATA_FORMAT) LocalDateTime end,
                                                  @RequestParam(required = false) String[] uris,
                                                  @RequestParam(required = false, defaultValue = "false") boolean unique) {
         return statsService.getViewStats(start, end, uris, unique);

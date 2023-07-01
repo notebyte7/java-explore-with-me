@@ -6,9 +6,9 @@ import org.springframework.transaction.annotation.Transactional;
 import ru.practicum.EndpointHitDto;
 import ru.practicum.ViewStatsDto;
 import ru.practicum.exception.WrongStateArgumentException;
-import ru.practicum.mapper.EndpointHitMapper;
+import ru.practicum.util.EndpointHitMapper;
 import ru.practicum.repository.StatsRepository;
-import ru.practicum.mapper.ViewStatsMapper;
+import ru.practicum.util.ViewStatsMapper;
 
 import java.time.LocalDateTime;
 import java.util.Arrays;

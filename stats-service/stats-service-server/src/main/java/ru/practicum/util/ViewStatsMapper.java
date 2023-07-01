@@ -1,4 +1,4 @@
-package ru.practicum.mapper;
+package ru.practicum.util;
 
 import ru.practicum.ViewStatsDto;
 import ru.practicum.model.ViewStats;

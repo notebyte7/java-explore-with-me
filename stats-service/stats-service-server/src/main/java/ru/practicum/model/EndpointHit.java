@@ -16,19 +16,19 @@ public class EndpointHit {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    Long id;
+    private Long id;
 
     @Column(name = "app")
-    String app;
+    private String app;
 
     @Column(name = "uri")
-    String uri;
+    private String uri;
 
     @Column(name = "ip")
-    String ip;
+    private String ip;
 
     @Column(name = "timestamp")
-    LocalDateTime timestamp;
+    private LocalDateTime timestamp;
 
     public EndpointHit(String app, String uri, String ip, LocalDateTime timestamp) {
         this.app = app;

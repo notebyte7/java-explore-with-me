@@ -18,8 +18,8 @@ public class StatsClient {
         this.client = WebClient.create(baseUrl);
     }
 
-    public void postEndpointHit(EndpointHitDto endpointHitDto) {
-        client
+    public ResponseEntity<Void> postEndpointHit(EndpointHitDto endpointHitDto) {
+        return client
                 .post()
                 .uri(uriBuilder -> uriBuilder
                         .path("/hit")
