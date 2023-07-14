@@ -1,20 +1,22 @@
 package ru.practicum;
 
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Service;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Component;
 import org.springframework.web.reactive.function.client.WebClient;
 import reactor.core.publisher.Mono;
+
 import java.util.List;
 
 
-@Service
+@Component
 @RequiredArgsConstructor
 public class StatsClient {
     private WebClient client;
 
-    public StatsClient(String baseUrl) {
+    public StatsClient(@Value("${client.url}") String baseUrl) {
         this.client = WebClient.create(baseUrl);
     }
 
