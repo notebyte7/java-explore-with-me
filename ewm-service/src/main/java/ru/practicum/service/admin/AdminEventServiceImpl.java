@@ -19,13 +19,11 @@ import ru.practicum.util.mapper.EventMapper;
 
 import java.time.Duration;
 import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
 import static ru.practicum.util.DateTimeMapper.toLocalDateTime;
-import static ru.practicum.util.Format.DATA_FORMAT;
 
 @Service
 @RequiredArgsConstructor

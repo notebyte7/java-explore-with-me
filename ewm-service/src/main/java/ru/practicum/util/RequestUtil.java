@@ -4,7 +4,6 @@ import lombok.RequiredArgsConstructor;
 import ru.practicum.exception.ValidationException;
 import ru.practicum.model.event.Event;
 import ru.practicum.model.event.EventState;
-import ru.practicum.model.participationrequest.ParticipationRequestStatus;
 import ru.practicum.repository.RequestRepository;
 
 @RequiredArgsConstructor

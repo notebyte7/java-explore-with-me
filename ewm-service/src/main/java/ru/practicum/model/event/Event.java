@@ -4,9 +4,9 @@ import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.experimental.FieldDefaults;
-import ru.practicum.model.location.Location;
 import ru.practicum.model.category.Category;
 import ru.practicum.model.compilation.Compilation;
+import ru.practicum.model.location.Location;
 import ru.practicum.model.participationrequest.ParticipationRequest;
 import ru.practicum.model.user.User;
 

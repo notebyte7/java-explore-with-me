@@ -3,7 +3,6 @@ package ru.practicum.util;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
-import ru.practicum.ViewStatsDto;
 import ru.practicum.dto.event.EventShortDto;
 import ru.practicum.exception.NotFoundException;
 import ru.practicum.exception.ValidationException;
@@ -11,10 +10,8 @@ import ru.practicum.model.event.Event;
 import ru.practicum.model.event.EventSort;
 import ru.practicum.model.event.EventState;
 
-import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
-import java.util.Set;
 import java.util.stream.Collectors;
 
 public class EventUtil {

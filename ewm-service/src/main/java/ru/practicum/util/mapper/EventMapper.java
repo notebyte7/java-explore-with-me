@@ -8,11 +8,11 @@ import ru.practicum.model.event.Event;
 import ru.practicum.model.participationrequest.ParticipationRequest;
 import ru.practicum.model.participationrequest.ParticipationRequestStatus;
 
-import static ru.practicum.util.Format.DATA_FORMAT;
-
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Set;
+
+import static ru.practicum.util.Format.DATA_FORMAT;
 
 public class EventMapper {
 

@@ -5,8 +5,6 @@ import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import ru.practicum.model.category.Category;
 
-import java.util.Optional;
-
 public interface CategoryRepository extends JpaRepository<Category, Long> {
     Category findByCategoryId(Long id);
 

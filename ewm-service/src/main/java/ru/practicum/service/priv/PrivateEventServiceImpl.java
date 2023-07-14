@@ -1,10 +1,8 @@
 package ru.practicum.service.priv;
 
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import ru.practicum.StatsClient;
 import ru.practicum.ViewStatsDto;
 import ru.practicum.dto.event.EventFullDto;
 import ru.practicum.dto.event.EventShortDto;
@@ -35,8 +33,9 @@ import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
+import static ru.practicum.util.EventUtil.validateEventInitiator;
+import static ru.practicum.util.EventUtil.validateEventStatus;
 import static ru.practicum.util.Format.DATA_FORMAT;
-import static ru.practicum.util.EventUtil.*;
 
 @Service
 @RequiredArgsConstructor

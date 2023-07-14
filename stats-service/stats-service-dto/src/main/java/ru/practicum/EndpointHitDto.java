@@ -2,7 +2,6 @@ package ru.practicum;
 import lombok.Value;
 
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.Pattern;
 
 @Value
 public class EndpointHitDto {

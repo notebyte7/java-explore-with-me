@@ -1,9 +1,6 @@
 package ru.practicum.dto.compilation;
 
-import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.Value;
 import org.springframework.lang.Nullable;
 import ru.practicum.dto.event.EventShortDto;
 
