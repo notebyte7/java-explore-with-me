@@ -62,11 +62,6 @@
 							<artifactId>checkstyle</artifactId>
 							<version>10.3</version>
 						</dependency>
-						<dependency>
-							<groupId>org.projectlombok</groupId>
-							<artifactId>lombok</artifactId>
-							<scope>provided</scope>
-						</dependency>
 					</dependencies>
 				</plugin>
 				<plugin>
@@ -165,14 +160,10 @@
 						<groupId>org.apache.maven.plugins</groupId>
 						<artifactId>maven-checkstyle-plugin</artifactId>
 					</plugin>
-
-
 						<plugin>
 							<groupId>org.springframework.boot</groupId>
 							<artifactId>spring-boot-maven-plugin</artifactId>
 						</plugin>
-
-
 					<plugin>
 						<groupId>com.github.spotbugs</groupId>
 						<artifactId>spotbugs-maven-plugin</artifactId>
