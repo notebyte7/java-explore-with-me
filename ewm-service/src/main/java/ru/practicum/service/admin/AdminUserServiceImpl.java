@@ -29,8 +29,8 @@ public class AdminUserServiceImpl implements AdminUserService {
     }
 
     private void checkUserNameAndEmailValidation(UserDto user) {
-        if (user.getName().length() > 254 || user.getEmail().length() > 254) {
-            throw new WrongStateArgumentException("слишком длинное имя или емейл", new IllegalArgumentException());
+        if (user.getName().length() > 250 || user.getEmail().length() > 254) {
+            throw new WrongStateArgumentException("Слишком длинное имя или емейл", new IllegalArgumentException());
         }
     }
 
