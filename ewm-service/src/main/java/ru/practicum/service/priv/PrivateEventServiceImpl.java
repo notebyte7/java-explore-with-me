@@ -15,6 +15,7 @@ import ru.practicum.dto.participationrequest.EventRequestStatusUpdateResult;
 import ru.practicum.dto.participationrequest.ParticipationRequestDto;
 import ru.practicum.exception.NotFoundException;
 import ru.practicum.exception.ValidationException;
+import ru.practicum.exception.WrongStateArgumentException;
 import ru.practicum.model.event.Event;
 import ru.practicum.model.event.EventState;
 import ru.practicum.model.location.Location;
@@ -55,6 +56,7 @@ public class PrivateEventServiceImpl implements PrivateEventService{
         Event event = EventMapper.toEvent(eventDto);
         event.setInitiator(userRepository.findById(userId).orElseThrow(() ->
                 new NotFoundException("Пользователь не найден", new NullPointerException())));
+        checkEventDate(eventDto.getEventDate());
         event.setCategory(categoryRepository.findByCategoryId(eventDto.getCategory()));
         event.setLocation(checkLocation(event.getLocation()));
         event.setCreatedOn(LocalDateTime.now());
@@ -63,6 +65,14 @@ public class PrivateEventServiceImpl implements PrivateEventService{
         eventFullDto.setConfirmedRequests(0L);
         eventFullDto.setViews(0L);
         return eventFullDto;
+    }
+
+    private void checkEventDate(String eventDate) {
+        LocalDateTime time = LocalDateTime.parse(eventDate, DateTimeFormatter.ofPattern(DATA_FORMAT));
+        if (time.isBefore(LocalDateTime.now())) {
+            throw new WrongStateArgumentException(
+                    "Дата не может быть в прошлом ", new IllegalArgumentException());
+        }
     }
 
     private Location checkLocation(Location location) {

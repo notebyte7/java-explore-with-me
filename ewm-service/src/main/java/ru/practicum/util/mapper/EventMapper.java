@@ -1,20 +1,17 @@
 package ru.practicum.util.mapper;
 
-import org.springframework.format.datetime.joda.DateTimeParser;
 import ru.practicum.dto.event.EventFullDto;
 import ru.practicum.dto.event.EventShortDto;
 import ru.practicum.dto.event.NewEventDto;
+import ru.practicum.exception.WrongStateArgumentException;
 import ru.practicum.model.event.Event;
 import ru.practicum.model.participationrequest.ParticipationRequest;
 import ru.practicum.model.participationrequest.ParticipationRequestStatus;
 
 import static ru.practicum.util.Format.DATA_FORMAT;
 
-import java.time.Duration;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.Locale;
 import java.util.Set;
 
 public class EventMapper {
@@ -39,7 +36,7 @@ public class EventMapper {
                 event.getAnnotation(),
                 CategoryMapper.toCategoryDto(event.getCategory()),
                 event.getDescription(),
-                event.getEventDate().format(DateTimeFormatter.ofPattern(DATA_FORMAT)),
+                validateEventDate(event.getEventDate()),
                 event.getCreatedOn().format(DateTimeFormatter.ofPattern(DATA_FORMAT)),
                 setPublishedOn(event.getPublishedOn()),
                 event.getLocation(),
@@ -93,5 +90,13 @@ public class EventMapper {
             event.setParticipantLimit(eventDto.getParticipantLimit());
         }
         return event;
+    }
+
+    private static String validateEventDate(LocalDateTime localDateTime) {
+        if (localDateTime.isBefore(LocalDateTime.now())) {
+            throw new WrongStateArgumentException(
+                    "Дата не может быть раньше текущего ", new IllegalArgumentException());
+        }
+        return localDateTime.format(DateTimeFormatter.ofPattern(DATA_FORMAT));
     }
 }

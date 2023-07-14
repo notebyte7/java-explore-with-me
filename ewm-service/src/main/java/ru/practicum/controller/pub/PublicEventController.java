@@ -7,8 +7,6 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import ru.practicum.dto.event.EventFullDto;
 import ru.practicum.dto.event.EventShortDto;
-import ru.practicum.StatsClient;
-import ru.practicum.model.EndpointHit;
 import ru.practicum.service.pub.PublicEventService;
 import ru.practicum.util.StatsManager;
 import ru.practicum.util.mapper.EndpointHitMapper;
@@ -20,7 +18,6 @@ import javax.validation.constraints.PositiveOrZero;
 import javax.validation.constraints.Size;
 import java.time.LocalDateTime;
 import java.util.Collection;
-import java.util.List;
 import java.util.Set;
 
 import static ru.practicum.util.Format.DATA_FORMAT;

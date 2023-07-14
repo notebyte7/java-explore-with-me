@@ -6,6 +6,7 @@ import ru.practicum.ViewStatsDto;
 import ru.practicum.dto.event.EventFullDto;
 import ru.practicum.dto.event.UpdateEventRequest;
 import ru.practicum.exception.NotFoundException;
+import ru.practicum.exception.WrongStateArgumentException;
 import ru.practicum.model.event.Event;
 import ru.practicum.repository.CategoryRepository;
 import ru.practicum.repository.EventRepository;
@@ -17,6 +18,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Set;
 
+import static ru.practicum.util.DateTimeMapper.toLocalDateTime;
 import static ru.practicum.util.Format.DATA_FORMAT;
 
 @Component
@@ -62,7 +64,7 @@ public class EventSetter {
             event.setCategory(categoryRepository.findByCategoryId(updateEventRequest.getCategory()));
         }
         if (updateEventRequest.getEventDate() != null) {
-            event.setEventDate(LocalDateTime.parse(updateEventRequest.getEventDate(), DateTimeFormatter.ofPattern(DATA_FORMAT)));
+            event.setEventDate(validateEventDate(updateEventRequest.getEventDate(), duration));
         }
         if (updateEventRequest.getLocation() != null) {
             event.setLocation(updateEventRequest.getLocation());
@@ -78,5 +80,14 @@ public class EventSetter {
         }
         event.setState(EventValidator.validateAndSetEventState(updateEventRequest, event, isAdmin));
         return event;
+    }
+
+    public LocalDateTime validateEventDate(String stringDateTime, Duration duration) {
+        LocalDateTime localDateTime = toLocalDateTime(stringDateTime);
+        if (localDateTime.isBefore(LocalDateTime.now().plus(duration))) {
+            throw new WrongStateArgumentException(
+                    "Дата не может быть раньше текущего ", new IllegalArgumentException());
+        }
+        return localDateTime;
     }
 }
