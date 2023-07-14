@@ -16,6 +16,7 @@ public interface AdminEventService {
                                            String rangeEnd,
                                            Integer from,
                                            Integer size);
+
     @Transactional
     EventFullDto patchEventById(Long eventId, UpdateEventRequest updateEventRequest);
 }
