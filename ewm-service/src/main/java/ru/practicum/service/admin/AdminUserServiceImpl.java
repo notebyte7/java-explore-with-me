@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import ru.practicum.dto.user.UserDto;
 import ru.practicum.exception.NotFoundException;
+import ru.practicum.exception.WrongStateArgumentException;
 import ru.practicum.model.user.User;
 import ru.practicum.repository.UserRepository;
 import ru.practicum.util.PageableBuilder;
@@ -23,7 +24,14 @@ public class AdminUserServiceImpl implements AdminUserService {
     @Transactional
     @Override
     public UserDto postNewUser(UserDto user) {
+        checkUserNameAndEmailValidation(user);
         return UserMapper.toUserDto(userRepository.save(UserMapper.toUser(user)));
+    }
+
+    private void checkUserNameAndEmailValidation(UserDto user) {
+        if (user.getName().length() > 254 || user.getEmail().length() > 254) {
+            throw new WrongStateArgumentException("слишком длинное имя или емейл", new IllegalArgumentException());
+        }
     }
 
     @Transactional(readOnly = true)
