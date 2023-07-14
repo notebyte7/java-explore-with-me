@@ -27,7 +27,7 @@ import static ru.practicum.util.EventUtil.*;
 @Service
 @RequiredArgsConstructor
 @Transactional(readOnly = true)
-public class PublicEventServiceImpl implements PublicEventService{
+public class PublicEventServiceImpl implements PublicEventService {
     private final EventRepository eventRepository;
     private final StatsManager statsManager;
 

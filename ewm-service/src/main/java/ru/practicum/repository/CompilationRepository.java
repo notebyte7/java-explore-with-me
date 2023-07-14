@@ -10,7 +10,7 @@ import java.util.Optional;
 
 public interface CompilationRepository extends JpaRepository<Compilation, Long> {
 
-    Optional<Compilation> findById (Long compId);
+    Optional<Compilation> findById(Long compId);
 
     @Query("SELECT c " +
             "FROM Compilation c " +

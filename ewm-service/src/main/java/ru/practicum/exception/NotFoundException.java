@@ -1,7 +1,7 @@
 package ru.practicum.exception;
 
 public class NotFoundException extends RuntimeException{
-    public NotFoundException(final String message, final Throwable cause) {
+    public NotFoundException(final String message, final Throwable cause){
         super(message, cause);
     }
 }

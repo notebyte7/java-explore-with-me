@@ -27,7 +27,7 @@ import java.util.stream.Collectors;
 @Service
 @RequiredArgsConstructor
 @Transactional
-public class AdminCompilationServiceImpl implements AdminCompilationService{
+public class AdminCompilationServiceImpl implements AdminCompilationService {
     private final CompilationRepository compilationRepository;
     private final EventRepository eventRepository;
     private final StatsManager statsManager;

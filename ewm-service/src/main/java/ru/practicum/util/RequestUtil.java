@@ -9,6 +9,7 @@ import ru.practicum.repository.RequestRepository;
 @RequiredArgsConstructor
 public class RequestUtil {
     private final RequestRepository requestRepository;
+
     public static void validateUserIsNotInitiator(Long userId, Event event) {
         if (event.getInitiator().getId().equals(userId)) {
             throw new ValidationException("Пользователь " + userId +

@@ -13,7 +13,7 @@ import ru.practicum.util.mapper.CategoryMapper;
 @Service
 @RequiredArgsConstructor
 @Transactional
-public class AdminCategoryServiceImpl implements AdminCategoryService{
+public class AdminCategoryServiceImpl implements AdminCategoryService {
     private final CategoryRepository categoryRepository;
     private final EventRepository eventRepository;
 

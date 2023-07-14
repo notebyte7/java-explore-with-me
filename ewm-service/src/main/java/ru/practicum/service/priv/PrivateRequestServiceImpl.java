@@ -23,7 +23,7 @@ import static ru.practicum.util.RequestUtil.*;
 
 @Service
 @RequiredArgsConstructor
-public class PrivateRequestServiceImpl implements PrivateRequestService{
+public class PrivateRequestServiceImpl implements PrivateRequestService {
     private final EventRepository eventRepository;
     private final UserRepository userRepository;
     private final RequestRepository requestRepository;

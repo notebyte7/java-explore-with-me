@@ -40,7 +40,7 @@ import static ru.practicum.util.Format.DATA_FORMAT;
 @Service
 @RequiredArgsConstructor
 @Transactional(readOnly = true)
-public class PrivateEventServiceImpl implements PrivateEventService{
+public class PrivateEventServiceImpl implements PrivateEventService {
     private final EventRepository eventRepository;
     private final RequestRepository requestRepository;
     private final UserRepository userRepository;

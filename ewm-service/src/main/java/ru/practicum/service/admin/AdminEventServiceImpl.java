@@ -27,7 +27,7 @@ import static ru.practicum.util.DateTimeMapper.toLocalDateTime;
 
 @Service
 @RequiredArgsConstructor
-public class AdminEventServiceImpl implements AdminEventService{
+public class AdminEventServiceImpl implements AdminEventService {
     private final EventRepository eventRepository;
     private final StatsManager statsManager;
     private final EventSetter eventSetter;
