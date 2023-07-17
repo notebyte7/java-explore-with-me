@@ -44,6 +44,13 @@ public class StatsManager {
                 getUris(eventIds), true).getBody();
     }
 
+    private boolean isEventHasViewStats(Long eventId, ViewStatsDto viewStats) {
+        String[] segments = viewStats.getUri().split("/");
+        String idStr = segments[segments.length - 1];
+        Long id = Long.parseLong(idStr);
+        return eventId.equals(id);
+    }
+
     private String[] getUris(Set<Long> eventIds) {
         List<String> urisList = new ArrayList<>(eventIds.size());
         String baseUrl = "/events/";
@@ -52,12 +59,5 @@ public class StatsManager {
                     urisList.add(baseUrl + eventId);
                 });
         return urisList.toArray(new String[0]);
-    }
-
-    private boolean isEventHasViewStats(Long eventId, ViewStatsDto viewStats) {
-        String[] segments = viewStats.getUri().split("/");
-        String idStr = segments[segments.length - 1];
-        Long id = Long.parseLong(idStr);
-        return eventId.equals(id);
     }
 }
