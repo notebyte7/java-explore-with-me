@@ -1,6 +1,5 @@
 package ru.practicum.service.priv;
 
-import org.springframework.transaction.annotation.Transactional;
 import ru.practicum.dto.participationrequest.ParticipationRequestDto;
 
 import java.util.List;

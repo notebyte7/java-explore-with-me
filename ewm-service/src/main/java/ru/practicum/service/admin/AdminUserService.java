@@ -1,6 +1,5 @@
 package ru.practicum.service.admin;
 
-import org.springframework.transaction.annotation.Transactional;
 import ru.practicum.dto.user.UserDto;
 
 import java.util.List;

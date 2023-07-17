@@ -1,6 +1,5 @@
 package ru.practicum.service.priv;
 
-import org.springframework.transaction.annotation.Transactional;
 import ru.practicum.dto.event.EventFullDto;
 import ru.practicum.dto.event.EventShortDto;
 import ru.practicum.dto.event.NewEventDto;
