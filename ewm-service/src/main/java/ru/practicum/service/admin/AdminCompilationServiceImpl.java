@@ -13,6 +13,7 @@ import ru.practicum.model.compilation.Compilation;
 import ru.practicum.model.event.Event;
 import ru.practicum.repository.CompilationRepository;
 import ru.practicum.repository.EventRepository;
+import ru.practicum.util.CompilationUtil;
 import ru.practicum.util.StatsManager;
 import ru.practicum.util.mapper.CompilationMapper;
 import ru.practicum.util.mapper.EventMapper;
@@ -30,7 +31,7 @@ import java.util.stream.Collectors;
 public class AdminCompilationServiceImpl implements AdminCompilationService {
     private final CompilationRepository compilationRepository;
     private final EventRepository eventRepository;
-    private final StatsManager statsManager;
+    private final CompilationUtil compilationUtil;
 
     @Override
     public CompilationDto postNewCompilation(NewCompilationDto newCompilationDto) {
@@ -41,7 +42,7 @@ public class AdminCompilationServiceImpl implements AdminCompilationService {
         Set<Event> compilationEvents = getCompilationEvents(newCompilationDto.getEvents());
         compilation.setEvents(compilationEvents);
         CompilationDto compilationDto = CompilationMapper.toCompilationDto(compilationRepository.save(compilation));
-        compilationDto.setEvents(getEventShortList(newCompilationDto.getEvents()));
+        compilationDto.setEvents(compilationUtil.getEventShortList(newCompilationDto.getEvents()));
         return compilationDto;
     }
 
@@ -67,24 +68,8 @@ public class AdminCompilationServiceImpl implements AdminCompilationService {
                 new NotFoundException("Подборка не найдена", new NullPointerException()));
         setCompilationFields(updateCompilationDto, compilation);
         CompilationDto compilationDto = CompilationMapper.toCompilationDto(compilationRepository.save(compilation));
-        compilationDto.setEvents(getEventShortList(updateCompilationDto.getEvents()));
+        compilationDto.setEvents(compilationUtil.getEventShortList(updateCompilationDto.getEvents()));
         return compilationDto;
-    }
-
-    public List<EventShortDto> getEventShortList(Set<Long> eventIds) {
-        if (eventIds != null) {
-            List<ViewStatsDto> viewStatsList = statsManager.getViewStats(eventIds);
-            return eventRepository.findAllById(eventIds)
-                    .stream()
-                    .map(event -> {
-                        EventShortDto eventShortDto = EventMapper.toEventShortDto(event);
-                        eventShortDto.setViews(statsManager.getViewsCount(eventShortDto.getId(), viewStatsList));
-                        return eventShortDto;
-                    })
-                    .collect(Collectors.toList());
-        } else {
-            return Collections.emptyList();
-        }
     }
 
     private void setCompilationFields(UpdateCompilationDto updateCompilationDto, Compilation compilation) {

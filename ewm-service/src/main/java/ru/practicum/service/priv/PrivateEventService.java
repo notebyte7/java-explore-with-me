@@ -12,7 +12,6 @@ import ru.practicum.dto.participationrequest.ParticipationRequestDto;
 import java.util.List;
 
 public interface PrivateEventService {
-    @Transactional
     EventFullDto postNewEvent(Long userId, NewEventDto eventDto);
 
     List<EventShortDto> getUserEvents(Long userId, Integer from, Integer size);

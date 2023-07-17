@@ -12,6 +12,7 @@ import ru.practicum.model.compilation.Compilation;
 import ru.practicum.model.event.Event;
 import ru.practicum.repository.CompilationRepository;
 import ru.practicum.repository.EventRepository;
+import ru.practicum.util.CompilationUtil;
 import ru.practicum.util.PageableBuilder;
 import ru.practicum.util.StatsManager;
 import ru.practicum.util.mapper.CompilationMapper;
@@ -28,8 +29,8 @@ import java.util.stream.Collectors;
 @Transactional(readOnly = true)
 public class PublicCompilationServiceImpl implements PublicCompilationService {
     private final CompilationRepository compilationRepository;
-    private final EventRepository eventRepository;
-    private final StatsManager statsManager;
+    private final CompilationUtil compilationUtil;
+
 
     @Override
     public List<CompilationDto> getCompilations(Boolean pinned, Integer from, Integer size) {
@@ -57,23 +58,9 @@ public class PublicCompilationServiceImpl implements PublicCompilationService {
                 .stream()
                 .map(Event::getId)
                 .collect(Collectors.toSet());
-        compilationDto.setEvents(getEventShortList(eventIds));
+        compilationDto.setEvents(compilationUtil.getEventShortList(eventIds));
         return compilationDto;
     }
 
-    public List<EventShortDto> getEventShortList(Set<Long> eventIds) {
-        if (eventIds != null) {
-            List<ViewStatsDto> viewStatsList = statsManager.getViewStats(eventIds);
-            return eventRepository.findAllById(eventIds)
-                    .stream()
-                    .map(event -> {
-                        EventShortDto eventShortDto = EventMapper.toEventShortDto(event);
-                        eventShortDto.setViews(statsManager.getViewsCount(eventShortDto.getId(), viewStatsList));
-                        return eventShortDto;
-                    })
-                    .collect(Collectors.toList());
-        } else {
-            return Collections.emptyList();
-        }
-    }
+
 }

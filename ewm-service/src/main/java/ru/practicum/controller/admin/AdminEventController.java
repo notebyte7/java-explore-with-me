@@ -16,6 +16,8 @@ import javax.validation.constraints.PositiveOrZero;
 import java.util.List;
 import java.util.Set;
 
+import static ru.practicum.util.Format.DATA_PATTERN_FORMAT;
+
 @RestController
 @RequiredArgsConstructor
 @RequestMapping(path = "/admin/events")
@@ -28,9 +30,9 @@ public class AdminEventController {
     public List<EventFullDto> getEvents(@RequestParam(required = false) Set<Long> users,
                                         @RequestParam(required = false) Set<String> states,
                                         @RequestParam(required = false) Set<Long> categories,
-                                        @Pattern(regexp = "^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1]) (2[0-3]|[01][0-9]):[0-5][0-9]:[0-5][0-9]$")
+                                        @Pattern(regexp = DATA_PATTERN_FORMAT)
                                         @RequestParam(required = false) String rangeStart,
-                                        @Pattern(regexp = "^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1]) (2[0-3]|[01][0-9]):[0-5][0-9]:[0-5][0-9]$")
+                                        @Pattern(regexp = DATA_PATTERN_FORMAT)
                                         @RequestParam(required = false) String rangeEnd,
                                         @RequestParam(defaultValue = "0", required = false) @PositiveOrZero Integer from,
                                         @RequestParam(defaultValue = "10", required = false) @Positive Integer size) {

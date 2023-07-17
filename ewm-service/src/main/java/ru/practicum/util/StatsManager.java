@@ -47,11 +47,11 @@ public class StatsManager {
     private String[] getUris(Set<Long> eventIds) {
         List<String> urisList = new ArrayList<>(eventIds.size());
         String baseUrl = "/events/";
-        for (Long eventId : eventIds) {
-            urisList.add(baseUrl + eventId);
-        }
-        String[] urisStr = urisList.toArray(new String[0]);
-        return urisStr;
+        eventIds
+                .forEach(eventId -> {
+                    urisList.add(baseUrl + eventId);
+                });
+        return urisList.toArray(new String[0]);
     }
 
     private boolean isEventHasViewStats(Long eventId, ViewStatsDto viewStats) {

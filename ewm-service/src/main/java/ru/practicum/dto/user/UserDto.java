@@ -16,6 +16,4 @@ public class UserDto {
     @NotBlank
     @Size(min = 2, max = 256)
     String name;
-
-
 }

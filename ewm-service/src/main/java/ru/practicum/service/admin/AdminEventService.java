@@ -8,7 +8,6 @@ import java.util.List;
 import java.util.Set;
 
 public interface AdminEventService {
-    @Transactional(readOnly = true)
     List<EventFullDto> getEventFullDtoList(Set<Long> users,
                                            Set<String> states,
                                            Set<Long> categories,
@@ -17,6 +16,5 @@ public interface AdminEventService {
                                            Integer from,
                                            Integer size);
 
-    @Transactional
     EventFullDto patchEventById(Long eventId, UpdateEventRequest updateEventRequest);
 }
