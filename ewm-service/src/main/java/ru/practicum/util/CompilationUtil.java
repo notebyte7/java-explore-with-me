@@ -17,6 +17,7 @@ import java.util.stream.Collectors;
 public class CompilationUtil {
     private final EventRepository eventRepository;
     private final StatsManager statsManager;
+
     public List<EventShortDto> getEventShortList(Set<Long> eventIds) {
         if (eventIds != null) {
             List<ViewStatsDto> viewStatsList = statsManager.getViewStats(eventIds);
