@@ -59,3 +59,4 @@ CREATE TABLE IF NOT EXISTS events_compilations (
     event_id 			BIGINT		                    REFERENCES events (event_id) ON DELETE CASCADE
     );
 
+
