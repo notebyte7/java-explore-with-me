@@ -11,29 +11,30 @@ import ru.practicum.dto.event.UpdateEventRequest;
 import ru.practicum.dto.participationrequest.EventRequestStatusUpdateRequest;
 import ru.practicum.dto.participationrequest.EventRequestStatusUpdateResult;
 import ru.practicum.dto.participationrequest.ParticipationRequestDto;
+import ru.practicum.dto.rating.RatingDto;
 import ru.practicum.exception.NotFoundException;
 import ru.practicum.exception.ValidationException;
 import ru.practicum.exception.WrongStateArgumentException;
 import ru.practicum.model.event.Event;
 import ru.practicum.model.event.EventState;
 import ru.practicum.model.location.Location;
+import ru.practicum.model.participationrequest.ParticipationRequest;
 import ru.practicum.model.participationrequest.ParticipationRequestStatus;
+import ru.practicum.model.rating.Rating;
+import ru.practicum.model.rating.RatingId;
+import ru.practicum.model.user.User;
 import ru.practicum.repository.*;
-import ru.practicum.util.EventSetter;
-import ru.practicum.util.PageableBuilder;
-import ru.practicum.util.StatsManager;
+import ru.practicum.util.*;
 import ru.practicum.util.mapper.EventMapper;
 import ru.practicum.util.mapper.ParticipationRequestMapper;
+import ru.practicum.util.mapper.RatingMapper;
 
 import java.time.Duration;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 import java.util.stream.Collectors;
 
-import static ru.practicum.util.EventUtil.validateEventInitiator;
 import static ru.practicum.util.EventUtil.validateEventStatus;
 import static ru.practicum.util.Format.DATA_FORMAT;
 
@@ -48,6 +49,7 @@ public class PrivateEventServiceImpl implements PrivateEventService {
     private final LocationRepository locationRepository;
     private final StatsManager statsManager;
     private final EventSetter eventSetter;
+    private final RatingRepository ratingRepository;
 
     @Transactional
     @Override
@@ -80,7 +82,7 @@ public class PrivateEventServiceImpl implements PrivateEventService {
     }
 
     @Override
-    public List<EventShortDto> getUserEvents(Long userId, Integer from, Integer size) {
+    public List<EventShortDto> getUserEvents(Long userId, Integer from, Integer size, Boolean asc) {
         Set<Long> userEventIds = new HashSet<>();
         List<EventShortDto> events = eventRepository.findEventsByInitiatorId(userId, PageableBuilder.getPageable(from, size))
                 .stream()
@@ -91,16 +93,17 @@ public class PrivateEventServiceImpl implements PrivateEventService {
                 })
                 .collect(Collectors.toList());
         List<ViewStatsDto> viewStatsList = statsManager.getViewStats(userEventIds);
-        return events.stream()
+        List<EventShortDto> unsortedEvent = events.stream()
                 .peek(eventShortDto -> eventShortDto.setViews(statsManager.getViewsCount(eventShortDto.getId(), viewStatsList)))
                 .collect(Collectors.toList());
+        return getSortedEventsShot(unsortedEvent, asc);
     }
 
     @Override
     public EventFullDto getUserEventById(Long userId, Long eventId) {
         Event event = eventRepository.findById(eventId).orElseThrow(() ->
                 new NotFoundException("Пользователь не найден", new NullPointerException()));
-        validateEventInitiator(userId, event);
+        EventInitiatorValidator.validateInitiator(userId, event);
         EventFullDto eventFullDto = EventMapper.toEventFullDto(event);
         eventFullDto.setConfirmedRequests(
                 requestRepository.countByEventIdAndStatus(eventId, ParticipationRequestStatus.CONFIRMED));
@@ -112,14 +115,14 @@ public class PrivateEventServiceImpl implements PrivateEventService {
     @Transactional
     public EventFullDto patchEventByInitiator(Long userId, Long eventId, UpdateEventRequest updateEventRequest) {
         Event event = eventRepository.findById(eventId).orElseThrow(() -> new NotFoundException("Нет события с таким id" + eventId,  new NullPointerException()));
-        validateEventInitiator(userId, event);
+        EventInitiatorValidator.validateInitiator(userId, event);
         validateEventStatus(event);
         return eventSetter.setAndPatch(updateEventRequest, event, Duration.ofHours(1), false);
     }
 
     @Override
     public List<ParticipationRequestDto> getEventRequests(Long userId, Long eventId) {
-        validateEventInitiator(userId, eventRepository.findById(eventId).orElseThrow(() -> new NotFoundException("Событие не найдено", new NullPointerException())));
+        EventInitiatorValidator.validateInitiator(userId, eventRepository.findById(eventId).orElseThrow(() -> new NotFoundException("Событие не найдено", new NullPointerException())));
         return requestRepository.findAllByEventId(eventId)
                 .stream()
                 .map(ParticipationRequestMapper::toParticipationRequestDto)
@@ -137,7 +140,7 @@ public class PrivateEventServiceImpl implements PrivateEventService {
                                Long eventId,
                                EventRequestStatusUpdateRequest updateRequest) {
         Event event = eventRepository.findById(eventId).orElseThrow(() -> new NotFoundException("Событие не найдено", new NullPointerException()));
-        validateEventInitiator(userId, event);
+        EventInitiatorValidator.validateInitiator(userId, event);
         ParticipationRequestStatus newStatus = ParticipationRequestStatus.valueOf(updateRequest.getStatus().toString());
         if (newStatus.equals(ParticipationRequestStatus.REJECTED)) {
             validateConfirmedRequests(updateRequest.getRequestIds());
@@ -196,5 +199,80 @@ public class PrivateEventServiceImpl implements PrivateEventService {
                             "Нельзя изменить уже утвержденный",
                             new IllegalArgumentException());
                 });
+    }
+
+    @Transactional
+    @Override
+    public RatingDto postRating(Long userId, Long eventId, Boolean isLike) {
+        validateOverLike(userId, eventId);
+        User user = userRepository.findById(userId).orElseThrow(() -> new NotFoundException("Пользователь не найден", new NullPointerException()));
+        Event event = eventRepository.findById(eventId).orElseThrow(() -> new NotFoundException("Событие не найдено", new NullPointerException()));
+        EventInitiatorValidator.validateNotInitiator(userId, event);
+        validateRequester(userId, event);
+        Rating rating = getNewRating(user, event, isLike);
+        return RatingMapper.toRatingDto(ratingRepository.save(rating));
+    }
+
+    @Transactional
+    @Override
+    public RatingDto putRating(Long userId, Long eventId, Boolean isLike) {
+        ratingRepository.put(userId, eventId, isLike);
+        return RatingMapper.toRatingDto(ratingRepository.findById(new RatingId(userId, eventId)).orElseThrow(() -> new NotFoundException("Не найден рейтинг", new NullPointerException())));
+    }
+
+    @Transactional
+    @Override
+    public void deleteRating(Long userId, Long eventId) {
+        ratingRepository.deleteByUserIdAndEventId(userId, eventId);
+    }
+
+    private Rating getNewRating(User user, Event event, Boolean isLike) {
+        Rating rating = new Rating();
+        rating.setId(new RatingId(user.getId(), event.getId()));
+        rating.setUser(user);
+        rating.setEvent(event);
+        rating.setIsLike(isLike);
+        return rating;
+    }
+
+    private void validateOverLike(Long userId, Long eventId) {
+        Optional<Rating> ratings = ratingRepository.findById(new RatingId(userId, eventId));
+        if (ratings.isPresent()) {
+            throw new ValidationException("Пользователь " + userId + " уже оценил событие " + eventId,
+                    new IllegalArgumentException());
+        }
+    }
+
+    private void validateRequester(Long userId, Event event) {
+        Optional<ParticipationRequest> requestOpt = event.getRequests()
+                .stream()
+                .filter(request -> request.getRequester().getId().equals(userId)
+                        && request.getStatus().equals(ParticipationRequestStatus.CONFIRMED))
+                .findAny();
+        if (requestOpt.isEmpty()) {
+            throw new ValidationException("Пользователь " + userId +
+                    " не может оценить событие " + event.getId(),
+                    new IllegalArgumentException());
+        }
+    }
+
+    private List<EventShortDto> getSortedEventsShot(List<EventShortDto> eventShortDtoList, Boolean asc) {
+        if (asc != null && !eventShortDtoList.isEmpty()) {
+            if (asc.equals(Boolean.TRUE)) {
+                return eventShortDtoList
+                        .stream()
+                        .sorted(Comparator.comparing(EventShortDto::getRating, Comparator.reverseOrder()))
+                        .collect(Collectors.toList());
+            } else {
+                return eventShortDtoList
+                        .stream()
+                        .sorted(Comparator.comparing(EventShortDto::getRating))
+                        .collect(Collectors.toList());
+            }
+        } else if (eventShortDtoList.isEmpty()){
+            return new ArrayList<>();
+        } else {
+            return eventShortDtoList;
+        }
     }
 }

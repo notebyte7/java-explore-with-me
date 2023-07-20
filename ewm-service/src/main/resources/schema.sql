@@ -1,11 +1,11 @@
 CREATE TABLE IF NOT EXISTS users (
-    id 		    		BIGINT			                GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    user_id 		    BIGINT			                GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     name 				VARCHAR(250)	                NOT NULL,
     email 				VARCHAR(254) 	                UNIQUE NOT NULL
     );
 
 CREATE TABLE IF NOT EXISTS categories (
-    id 		    		BIGINT			                GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    category_id 		    		BIGINT			                GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     name 				VARCHAR(50)		                UNIQUE NOT NULL
     );
 
@@ -18,10 +18,10 @@ CREATE TABLE IF NOT EXISTS locations (
 
 CREATE TABLE IF NOT EXISTS events (
     event_id 		    BIGINT			                GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
-    initiator 			BIGINT		                    REFERENCES users (id) ON DELETE CASCADE,
+    initiator 			BIGINT		                    REFERENCES users (user_id) ON DELETE CASCADE,
     title 				VARCHAR(120) 	                NOT NULL,
     annotation			VARCHAR(2000)	                NOT NULL,
-    category    		BIGINT			                REFERENCES categories (id) ON DELETE CASCADE,
+    category    		BIGINT			                REFERENCES categories (category_id) ON DELETE CASCADE,
     description 		VARCHAR(7000)	                NOT NULL,
     event_date			TIMESTAMP WITHOUT TIME ZONE		NOT NULL CHECK (event_date >= NOW() + INTERVAL '2' HOUR),
     created_on			TIMESTAMP WITHOUT TIME ZONE		NOT NULL DEFAULT NOW(),
@@ -33,10 +33,17 @@ CREATE TABLE IF NOT EXISTS events (
     state				VARCHAR(20)		                NOT NULL DEFAULT 'PENDING'
     );
 
+CREATE TABLE IF NOT EXISTS ratings (
+    user_id             BIGINT                          REFERENCES users (user_id) ON DELETE CASCADE,
+    event_id            BIGINT                          REFERENCES events (event_id) ON DELETE CASCADE,
+    rating              BOOLEAN                         NOT NULL,
+    UNIQUE (user_id, event_id)
+);
+
 CREATE TABLE IF NOT EXISTS participation_requests (
     id 		    		BIGINT			                GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     event 				BIGINT		                    REFERENCES events (event_id) ON DELETE CASCADE,
-    requester			BIGINT		                    REFERENCES users (id) ON DELETE CASCADE,
+    requester			BIGINT		                    REFERENCES users (user_id) ON DELETE CASCADE,
     created				TIMESTAMP WITHOUT TIME ZONE		NOT NULL DEFAULT NOW(),
     status				VARCHAR(20)		                NOT NULL DEFAULT 'PENDING'
     );

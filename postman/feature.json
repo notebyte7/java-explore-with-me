@@ -1,0 +1,2020 @@
+{
+  "info": {
+    "_postman_id": "ddc6948a-4af9-4945-a813-10776063b53c",
+    "name": "Test Explore With Me - Feature Rating Events",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "24567646"
+  },
+  "item": [
+    {
+      "name": "Pre-request Data",
+      "item": [
+        {
+          "name": "Добавление пользователя 136",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Ответ должен содержать код статуса 201 и данные в формате json\", function() {",
+                  "    pm.response.to.have.status(201);",
+                  "    pm.response.to.be.withBody;",
+                  "    pm.response.to.be.json;",
+                  "});",
+                  "",
+                  "pm.test(\"Ответ должен содержать поля: id, name, email, rating\", function () {",
+                  "    const target = pm.response.json();",
+                  "    pm.expect(target).to.have.property('id');",
+                  "    pm.expect(target).to.have.property('name');",
+                  "    pm.expect(target).to.have.property('email');",
+                  "    pm.expect(target).to.have.property('rating');",
+                  "});",
+                  "",
+                  "pm.test(\"Поле 'id' должно иметь значение 136\", function () {",
+                  "    var jsonData = pm.response.json();",
+                  "    pm.expect(jsonData).to.have.property('id');",
+                  "    pm.expect(jsonData.id, '\"id\" must be 136').to.eql(136);",
+                  "});",
+                  "",
+                  "pm.test(\"Поле 'rating' должно иметь значение 0\", function () {",
+                  "    var jsonData = pm.response.json();",
+                  "    pm.expect(jsonData).to.have.property('rating');",
+                  "    pm.expect(jsonData.rating, '\"rating\" must be 0').to.eql(0);",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Ilya\",\n  \"email\": \"ilya@yandex.ru\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/admin/users",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "admin",
+                "users"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Добавление пользователя 137",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Ответ должен содержать код статуса 201 и данные в формате json\", function() {",
+                  "    pm.response.to.have.status(201);",
+                  "    pm.response.to.be.withBody;",
+                  "    pm.response.to.be.json;",
+                  "});",
+                  "",
+                  "pm.test(\"Ответ должен содержать поля: id, name, email, rating\", function () {",
+                  "    const target = pm.response.json();",
+                  "    pm.expect(target).to.have.property('id');",
+                  "    pm.expect(target).to.have.property('name');",
+                  "    pm.expect(target).to.have.property('email');",
+                  "    pm.expect(target).to.have.property('rating');",
+                  "});",
+                  "",
+                  "pm.test(\"Поле 'id' должно иметь значение 137\", function () {",
+                  "    var jsonData = pm.response.json();",
+                  "    pm.expect(jsonData).to.have.property('id');",
+                  "    pm.expect(jsonData.id, '\"id\" must be 137').to.eql(137);",
+                  "});",
+                  "",
+                  "pm.test(\"Поле 'rating' должно иметь значение 0\", function () {",
+                  "    var jsonData = pm.response.json();",
+                  "    pm.expect(jsonData).to.have.property('rating');",
+                  "    pm.expect(jsonData.rating, '\"rating\" must be 0').to.eql(0);",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Anton\",\n  \"email\": \"anton@yandex.ru\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/admin/users",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "admin",
+                "users"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Добавление пользователя 138",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Ответ должен содержать код статуса 201 и данные в формате json\", function() {",
+                  "    pm.response.to.have.status(201);",
+                  "    pm.response.to.be.withBody;",
+                  "    pm.response.to.be.json;",
+                  "});",
+                  "",
+                  "pm.test(\"Ответ должен содержать поля: id, name, email, rating\", function () {",
+                  "    const target = pm.response.json();",
+                  "    pm.expect(target).to.have.property('id');",
+                  "    pm.expect(target).to.have.property('name');",
+                  "    pm.expect(target).to.have.property('email');",
+                  "    pm.expect(target).to.have.property('rating');",
+                  "});",
+                  "",
+                  "pm.test(\"Поле 'id' должно иметь значение 138\", function () {",
+                  "    var jsonData = pm.response.json();",
+                  "    pm.expect(jsonData).to.have.property('id');",
+                  "    pm.expect(jsonData.id, '\"id\" must be 138').to.eql(138);",
+                  "});",
+                  "",
+                  "pm.test(\"Поле 'rating' должно иметь значение 0\", function () {",
+                  "    var jsonData = pm.response.json();",
+                  "    pm.expect(jsonData).to.have.property('rating');",
+                  "    pm.expect(jsonData.rating, '\"rating\" must be 0').to.eql(0);",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Sveta\",\n  \"email\": \"sveta@yandex.ru\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/admin/users",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "admin",
+                "users"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Добавление события 106 от пользователя 136",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Ответ должен содержать код статуса 201 и данные в формате json\", function() {",
+                  "    pm.response.to.have.status(201);",
+                  "    pm.response.to.be.withBody;",
+                  "    pm.response.to.be.json;",
+                  "});",
+                  "",
+                  "pm.test(\"Ответ должен содержать поле: rating\", function () {",
+                  "    const target = pm.response.json();",
+                  "    pm.expect(target).to.have.property('rating');",
+                  "});",
+                  "",
+                  "pm.test(\"Поле 'rating' должно иметь значение 0\", function () {",
+                  "    var jsonData = pm.response.json();",
+                  "    pm.expect(jsonData).to.have.property('rating');",
+                  "    pm.expect(jsonData.rating, '\"rating\" must be 0').to.eql(0);",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"title\": \"Event test1\",\n    \"annotation\": \"Annotation event test1\",\n    \"category\": 1,\n    \"description\": \"Description event test1\",\n    \"eventDate\": \"2023-08-04 18:00:01\",\n    \"location\": {\n        \"lat\": 55.751698,\n        \"lon\": 37.618911\n    },\n    \"requestModeration\": false\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/users/:userId/events/",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "users",
+                ":userId",
+                "events",
+                ""
+              ],
+              "variable": [
+                {
+                  "key": "userId",
+                  "value": "136"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Добавление события 107 от пользователя 137",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Ответ должен содержать код статуса 201 и данные в формате json\", function() {",
+                  "    pm.response.to.have.status(201);",
+                  "    pm.response.to.be.withBody;",
+                  "    pm.response.to.be.json;",
+                  "});",
+                  "",
+                  "pm.test(\"Ответ должен содержать поле: rating\", function () {",
+                  "    const target = pm.response.json();",
+                  "    pm.expect(target).to.have.property('rating');",
+                  "});",
+                  "",
+                  "pm.test(\"Поле 'rating' должно иметь значение 0\", function () {",
+                  "    var jsonData = pm.response.json();",
+                  "    pm.expect(jsonData).to.have.property('rating');",
+                  "    pm.expect(jsonData.rating, '\"rating\" must be 0').to.eql(0);",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"title\": \"Event test2\",\n    \"annotation\": \"Annotation event test2\",\n    \"category\": 1,\n    \"description\": \"Description event test2\",\n    \"eventDate\": \"2023-08-09 12:00:01\",\n    \"location\": {\n        \"lat\": 55.784698,\n        \"lon\": 37.758913\n    },\n    \"requestModeration\": false\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/users/:userId/events/",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "users",
+                ":userId",
+                "events",
+                ""
+              ],
+              "variable": [
+                {
+                  "key": "userId",
+                  "value": "137"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Добавление события 108 от пользователя 137 с модерацией",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Ответ должен содержать код статуса 201 и данные в формате json\", function() {",
+                  "    pm.response.to.have.status(201);",
+                  "    pm.response.to.be.withBody;",
+                  "    pm.response.to.be.json;",
+                  "});",
+                  "",
+                  "pm.test(\"Ответ должен содержать поле: rating\", function () {",
+                  "    const target = pm.response.json();",
+                  "    pm.expect(target).to.have.property('rating');",
+                  "});",
+                  "",
+                  "pm.test(\"Поле 'rating' должно иметь значение 0\", function () {",
+                  "    var jsonData = pm.response.json();",
+                  "    pm.expect(jsonData).to.have.property('rating');",
+                  "    pm.expect(jsonData.rating, '\"rating\" must be 0').to.eql(0);",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"title\": \"Event test2\",\n    \"annotation\": \"Annotation event test2\",\n    \"category\": 1,\n    \"description\": \"Description event test2\",\n    \"eventDate\": \"2023-08-09 12:00:01\",\n    \"location\": {\n        \"lat\": 55.999698,\n        \"lon\": 37.77713\n    },\n    \"requestModeration\": true\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/users/:userId/events/",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "users",
+                ":userId",
+                "events",
+                ""
+              ],
+              "variable": [
+                {
+                  "key": "userId",
+                  "value": "137"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Публикация события 106",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Ответ должен содержать код статуса 200 и данные в формате json\", function () {\r",
+                  "    pm.response.to.be.ok;    \r",
+                  "    pm.response.to.be.withBody;\r",
+                  "    pm.response.to.be.json;\r",
+                  "});\r",
+                  "\r",
+                  "pm.test(\"Ответ должен содержать поле: state\", function () {\r",
+                  "    const target = pm.response.json();\r",
+                  "    pm.expect(target).to.have.property('state');\r",
+                  "});\r",
+                  "\r",
+                  "pm.test(\"Поле 'state' должно иметь значение 'PUBLISHED'\", function () {\r",
+                  "    var jsonData = pm.response.json();\r",
+                  "    pm.expect(jsonData).to.have.property('state');\r",
+                  "    pm.expect(jsonData.state, '\"state\" must be \"PUBLISHED\"').to.eql('PUBLISHED');\r",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "PATCH",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"stateAction\": \"PUBLISH_EVENT\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/admin/events/:eventId",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "admin",
+                "events",
+                ":eventId"
+              ],
+              "variable": [
+                {
+                  "key": "eventId",
+                  "value": "106"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Публикация события 107",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Ответ должен содержать код статуса 200 и данные в формате json\", function () {\r",
+                  "    pm.response.to.be.ok;    \r",
+                  "    pm.response.to.be.withBody;\r",
+                  "    pm.response.to.be.json;\r",
+                  "});\r",
+                  "\r",
+                  "pm.test(\"Ответ должен содержать поле: state\", function () {\r",
+                  "    const target = pm.response.json();\r",
+                  "    pm.expect(target).to.have.property('state');\r",
+                  "});\r",
+                  "\r",
+                  "pm.test(\"Поле 'state' должно иметь значение 'PUBLISHED'\", function () {\r",
+                  "    var jsonData = pm.response.json();\r",
+                  "    pm.expect(jsonData).to.have.property('state');\r",
+                  "    pm.expect(jsonData.state, '\"state\" must be \"PUBLISHED\"').to.eql('PUBLISHED');\r",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "PATCH",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"stateAction\": \"PUBLISH_EVENT\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/admin/events/:eventId",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "admin",
+                "events",
+                ":eventId"
+              ],
+              "variable": [
+                {
+                  "key": "eventId",
+                  "value": "107"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Публикация события 108",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Ответ должен содержать код статуса 200 и данные в формате json\", function () {\r",
+                  "    pm.response.to.be.ok;    \r",
+                  "    pm.response.to.be.withBody;\r",
+                  "    pm.response.to.be.json;\r",
+                  "});\r",
+                  "\r",
+                  "pm.test(\"Ответ должен содержать поле: state\", function () {\r",
+                  "    const target = pm.response.json();\r",
+                  "    pm.expect(target).to.have.property('state');\r",
+                  "});\r",
+                  "\r",
+                  "pm.test(\"Поле 'state' должно иметь значение 'PUBLISHED'\", function () {\r",
+                  "    var jsonData = pm.response.json();\r",
+                  "    pm.expect(jsonData).to.have.property('state');\r",
+                  "    pm.expect(jsonData.state, '\"state\" must be \"PUBLISHED\"').to.eql('PUBLISHED');\r",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "PATCH",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"stateAction\": \"PUBLISH_EVENT\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/admin/events/:eventId",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "admin",
+                "events",
+                ":eventId"
+              ],
+              "variable": [
+                {
+                  "key": "eventId",
+                  "value": "108"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Запрос на участие в событии 106 пользователем 137",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Ответ должен содержать код статуса 201 и данные в формате json\", function() {\r",
+                  "    pm.response.to.have.status(201);\r",
+                  "    pm.response.to.be.withBody;\r",
+                  "    pm.response.to.be.json;\r",
+                  "});\r",
+                  "\r",
+                  "pm.test(\"Ответ должен содержать поле: status\", function () {\r",
+                  "    const target = pm.response.json();\r",
+                  "    pm.expect(target).to.have.property('status');\r",
+                  "});\r",
+                  "\r",
+                  "pm.test(\"Поле 'status' должно иметь значение 'CONFIRMED'\", function () {\r",
+                  "    var jsonData = pm.response.json();\r",
+                  "    pm.expect(jsonData).to.have.property('status');\r",
+                  "    pm.expect(jsonData.status, '\"status\" must be \"CONFIRMED\"').to.eql('CONFIRMED');\r",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/users/:userId/requests?eventId=106",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "users",
+                ":userId",
+                "requests"
+              ],
+              "query": [
+                {
+                  "key": "eventId",
+                  "value": "106"
+                }
+              ],
+              "variable": [
+                {
+                  "key": "userId",
+                  "value": "137"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Запрос на участие в событии 106 пользователем 138",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Ответ должен содержать код статуса 201 и данные в формате json\", function() {\r",
+                  "    pm.response.to.have.status(201);\r",
+                  "    pm.response.to.be.withBody;\r",
+                  "    pm.response.to.be.json;\r",
+                  "});\r",
+                  "\r",
+                  "pm.test(\"Ответ должен содержать поле: status\", function () {\r",
+                  "    const target = pm.response.json();\r",
+                  "    pm.expect(target).to.have.property('status');\r",
+                  "});\r",
+                  "\r",
+                  "pm.test(\"Поле 'status' должно иметь значение 'CONFIRMED'\", function () {\r",
+                  "    var jsonData = pm.response.json();\r",
+                  "    pm.expect(jsonData).to.have.property('status');\r",
+                  "    pm.expect(jsonData.status, '\"status\" must be \"CONFIRMED\"').to.eql('CONFIRMED');\r",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/users/:userId/requests?eventId=106",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "users",
+                ":userId",
+                "requests"
+              ],
+              "query": [
+                {
+                  "key": "eventId",
+                  "value": "106"
+                }
+              ],
+              "variable": [
+                {
+                  "key": "userId",
+                  "value": "138"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Запрос на участие в событии 107 пользователем 136",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Ответ должен содержать код статуса 201 и данные в формате json\", function() {\r",
+                  "    pm.response.to.have.status(201);\r",
+                  "    pm.response.to.be.withBody;\r",
+                  "    pm.response.to.be.json;\r",
+                  "});\r",
+                  "\r",
+                  "pm.test(\"Ответ должен содержать поле: status\", function () {\r",
+                  "    const target = pm.response.json();\r",
+                  "    pm.expect(target).to.have.property('status');\r",
+                  "});\r",
+                  "\r",
+                  "pm.test(\"Поле 'status' должно иметь значение 'CONFIRMED'\", function () {\r",
+                  "    var jsonData = pm.response.json();\r",
+                  "    pm.expect(jsonData).to.have.property('status');\r",
+                  "    pm.expect(jsonData.status, '\"status\" must be \"CONFIRMED\"').to.eql('CONFIRMED');\r",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/users/:userId/requests?eventId=107",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "users",
+                ":userId",
+                "requests"
+              ],
+              "query": [
+                {
+                  "key": "eventId",
+                  "value": "107"
+                }
+              ],
+              "variable": [
+                {
+                  "key": "userId",
+                  "value": "136"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Запрос на участие в событии 107 пользователем 138",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Ответ должен содержать код статуса 201 и данные в формате json\", function() {\r",
+                  "    pm.response.to.have.status(201);\r",
+                  "    pm.response.to.be.withBody;\r",
+                  "    pm.response.to.be.json;\r",
+                  "});\r",
+                  "\r",
+                  "pm.test(\"Ответ должен содержать поле: status\", function () {\r",
+                  "    const target = pm.response.json();\r",
+                  "    pm.expect(target).to.have.property('status');\r",
+                  "});\r",
+                  "\r",
+                  "pm.test(\"Поле 'status' должно иметь значение 'CONFIRMED'\", function () {\r",
+                  "    var jsonData = pm.response.json();\r",
+                  "    pm.expect(jsonData).to.have.property('status');\r",
+                  "    pm.expect(jsonData.status, '\"status\" must be \"CONFIRMED\"').to.eql('CONFIRMED');\r",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/users/:userId/requests?eventId=107",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "users",
+                ":userId",
+                "requests"
+              ],
+              "query": [
+                {
+                  "key": "eventId",
+                  "value": "107"
+                }
+              ],
+              "variable": [
+                {
+                  "key": "userId",
+                  "value": "138"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Запрос на участие в событии 108 пользователем 138",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Ответ должен содержать код статуса 201 и данные в формате json\", function() {\r",
+                  "    pm.response.to.have.status(201);\r",
+                  "    pm.response.to.be.withBody;\r",
+                  "    pm.response.to.be.json;\r",
+                  "});\r",
+                  "\r",
+                  "pm.test(\"Ответ должен содержать поле: status\", function () {\r",
+                  "    const target = pm.response.json();\r",
+                  "    pm.expect(target).to.have.property('status');\r",
+                  "});\r",
+                  "\r",
+                  "pm.test(\"Поле 'status' должно иметь значение 'CONFIRMED'\", function () {\r",
+                  "    var jsonData = pm.response.json();\r",
+                  "    pm.expect(jsonData).to.have.property('status');\r",
+                  "    pm.expect(jsonData.status, '\"status\" must be \"CONFIRMED\"').to.eql('CONFIRMED');\r",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/users/:userId/requests?eventId=108",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "users",
+                ":userId",
+                "requests"
+              ],
+              "query": [
+                {
+                  "key": "eventId",
+                  "value": "108"
+                }
+              ],
+              "variable": [
+                {
+                  "key": "userId",
+                  "value": "138"
+                }
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Rating Test",
+      "item": [
+        {
+          "name": "Получение пользователей с 0 рейтингом",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Ответ должен содержать код статуса 200 и данные в формате json\", function () {\r",
+                  "    pm.response.to.be.ok;    \r",
+                  "    pm.response.to.be.withBody;\r",
+                  "    pm.response.to.be.json;\r",
+                  "});\r",
+                  "\r",
+                  "pm.test(\"Количество пользователей должно быть 136\", function () {\r",
+                  "    var jsonData = pm.response.json();\r",
+                  "    pm.expect(jsonData.length, 'List length must be 136').to.eql(136);\r",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/admin/users?size=1000",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "admin",
+                "users"
+              ],
+              "query": [
+                {
+                  "key": "size",
+                  "value": "1000"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Получение событий с 0 рейтингом",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Ответ должен содержать код статуса 200 и данные в формате json\", function () {\r",
+                  "    pm.response.to.be.ok;    \r",
+                  "    pm.response.to.be.withBody;\r",
+                  "    pm.response.to.be.json;\r",
+                  "});\r",
+                  "\r",
+                  "pm.test(\"Количество событий должно быть 108\", function () {\r",
+                  "    var jsonData = pm.response.json();\r",
+                  "    pm.expect(jsonData.length, 'List length must be 108').to.eql(108);\r",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/admin/events?size=1000",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "admin",
+                "events"
+              ],
+              "query": [
+                {
+                  "key": "size",
+                  "value": "1000"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Поставить лайк событию инициатором -ошибка 409",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Ответ должен содержать код статуса 409 и данные в формате json\", function () {\r",
+                  "    pm.response.to.have.status(409);\r",
+                  "    pm.response.to.be.withBody;\r",
+                  "    pm.response.to.be.json;\r",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/users/:userId/events/:eventId/rating?isLike=true",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "users",
+                ":userId",
+                "events",
+                ":eventId",
+                "rating"
+              ],
+              "query": [
+                {
+                  "key": "isLike",
+                  "value": "true"
+                }
+              ],
+              "variable": [
+                {
+                  "key": "userId",
+                  "value": "136"
+                },
+                {
+                  "key": "eventId",
+                  "value": "106"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Поставить лайк событию 106 пользователем 137 без параметра запроса",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Ответ должен содержать код статуса 201 и данные в формате json\", function() {\r",
+                  "    pm.response.to.have.status(201);\r",
+                  "    pm.response.to.be.withBody;\r",
+                  "    pm.response.to.be.json;\r",
+                  "});\r",
+                  "\r",
+                  "pm.test(\"Ответ должен содержать поля: userName, eventTitle, ratingType\", function () {\r",
+                  "    const target = pm.response.json();\r",
+                  "    pm.expect(target).to.have.property('userName');\r",
+                  "    pm.expect(target).to.have.property('eventTitle');\r",
+                  "    pm.expect(target).to.have.property('ratingType');\r",
+                  "});\r",
+                  "\r",
+                  "pm.test(\"Поле 'userName' должно иметь значение 'Anton'\", function () {\r",
+                  "    var jsonData = pm.response.json();\r",
+                  "    pm.expect(jsonData).to.have.property('userName');\r",
+                  "    pm.expect(jsonData.userName, '\"userName\" must be \"Anton\"').to.eql('Anton');\r",
+                  "});\r",
+                  "\r",
+                  "pm.test(\"Поле 'eventTitle' должно иметь значение 'Event test1'\", function () {\r",
+                  "    var jsonData = pm.response.json();\r",
+                  "    pm.expect(jsonData).to.have.property('eventTitle');\r",
+                  "    pm.expect(jsonData.eventTitle, '\"eventTitle\" must be \"Event test1\"').to.eql('Event test1');\r",
+                  "});\r",
+                  "\r",
+                  "pm.test(\"Поле 'ratingType' должно иметь значение 'LIKE'\", function () {\r",
+                  "    var jsonData = pm.response.json();\r",
+                  "    pm.expect(jsonData).to.have.property('ratingType');\r",
+                  "    pm.expect(jsonData.ratingType, '\"ratingType\" must be \"LIKE\"').to.eql('LIKE');\r",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/users/:userId/events/:eventId/rating",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "users",
+                ":userId",
+                "events",
+                ":eventId",
+                "rating"
+              ],
+              "variable": [
+                {
+                  "key": "userId",
+                  "value": "137"
+                },
+                {
+                  "key": "eventId",
+                  "value": "106"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Повторный лайк событию",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Ответ должен содержать код статуса 409 и данные в формате json\", function () {\r",
+                  "    pm.response.to.have.status(409);\r",
+                  "    pm.response.to.be.withBody;\r",
+                  "    pm.response.to.be.json;\r",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/users/:userId/events/:eventId/rating?isLike=true",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "users",
+                ":userId",
+                "events",
+                ":eventId",
+                "rating"
+              ],
+              "query": [
+                {
+                  "key": "isLike",
+                  "value": "true"
+                }
+              ],
+              "variable": [
+                {
+                  "key": "userId",
+                  "value": "137"
+                },
+                {
+                  "key": "eventId",
+                  "value": "106"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Поставить лайк событию 106 пользователем 134",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Ответ должен содержать код статуса 201 и данные в формате json\", function() {\r",
+                  "    pm.response.to.have.status(201);\r",
+                  "    pm.response.to.be.withBody;\r",
+                  "    pm.response.to.be.json;\r",
+                  "});\r",
+                  "\r",
+                  "pm.test(\"Ответ должен содержать поля: userName, eventTitle, ratingType\", function () {\r",
+                  "    const target = pm.response.json();\r",
+                  "    pm.expect(target).to.have.property('userName');\r",
+                  "    pm.expect(target).to.have.property('eventTitle');\r",
+                  "    pm.expect(target).to.have.property('ratingType');\r",
+                  "});\r",
+                  "\r",
+                  "pm.test(\"Поле 'userName' должно иметь значение 'Sveta'\", function () {\r",
+                  "    var jsonData = pm.response.json();\r",
+                  "    pm.expect(jsonData).to.have.property('userName');\r",
+                  "    pm.expect(jsonData.userName, '\"userName\" must be \"Sveta\"').to.eql('Sveta');\r",
+                  "});\r",
+                  "\r",
+                  "pm.test(\"Поле 'eventTitle' должно иметь значение 'Event test1'\", function () {\r",
+                  "    var jsonData = pm.response.json();\r",
+                  "    pm.expect(jsonData).to.have.property('eventTitle');\r",
+                  "    pm.expect(jsonData.eventTitle, '\"eventTitle\" must be \"Event test1\"').to.eql('Event test1');\r",
+                  "});\r",
+                  "\r",
+                  "pm.test(\"Поле 'rating' должно иметь значение 'LIKE'\", function () {\r",
+                  "    var jsonData = pm.response.json();\r",
+                  "    pm.expect(jsonData).to.have.property('ratingType');\r",
+                  "    pm.expect(jsonData.ratingType, '\"ratingType\" must be \"LIKE\"').to.eql('LIKE');\r",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/users/:userId/events/:eventId/rating",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "users",
+                ":userId",
+                "events",
+                ":eventId",
+                "rating"
+              ],
+              "variable": [
+                {
+                  "key": "userId",
+                  "value": "138"
+                },
+                {
+                  "key": "eventId",
+                  "value": "106"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Поставить дизлайк событию 107 пользователем 136",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Ответ должен содержать код статуса 201 и данные в формате json\", function() {\r",
+                  "    pm.response.to.have.status(201);\r",
+                  "    pm.response.to.be.withBody;\r",
+                  "    pm.response.to.be.json;\r",
+                  "});\r",
+                  "\r",
+                  "pm.test(\"Ответ должен содержать поля: userName, eventTitle, ratingType\", function () {\r",
+                  "    const target = pm.response.json();\r",
+                  "    pm.expect(target).to.have.property('userName');\r",
+                  "    pm.expect(target).to.have.property('eventTitle');\r",
+                  "    pm.expect(target).to.have.property('ratingType');\r",
+                  "});\r",
+                  "\r",
+                  "pm.test(\"Поле 'userName' должно иметь значение 'Ilya'\", function () {\r",
+                  "    var jsonData = pm.response.json();\r",
+                  "    pm.expect(jsonData).to.have.property('userName');\r",
+                  "    pm.expect(jsonData.userName, '\"userName\" must be \"Ilya\"').to.eql('Ilya');\r",
+                  "});\r",
+                  "\r",
+                  "pm.test(\"Поле 'eventTitle' должно иметь значение 'Event №2'\", function () {\r",
+                  "    var jsonData = pm.response.json();\r",
+                  "    pm.expect(jsonData).to.have.property('eventTitle');\r",
+                  "    pm.expect(jsonData.eventTitle, '\"eventTitle\" must be \"Event test2\"').to.eql('Event test2');\r",
+                  "});\r",
+                  "\r",
+                  "pm.test(\"Поле 'ratingType' должно иметь значение 'DISLIKE'\", function () {\r",
+                  "    var jsonData = pm.response.json();\r",
+                  "    pm.expect(jsonData).to.have.property('ratingType');\r",
+                  "    pm.expect(jsonData.ratingType, '\"ratingType\" must be \"DISLIKE\"').to.eql('DISLIKE');\r",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/users/:userId/events/:eventId/rating?isLike=false",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "users",
+                ":userId",
+                "events",
+                ":eventId",
+                "rating"
+              ],
+              "query": [
+                {
+                  "key": "isLike",
+                  "value": "false"
+                }
+              ],
+              "variable": [
+                {
+                  "key": "userId",
+                  "value": "136"
+                },
+                {
+                  "key": "eventId",
+                  "value": "107"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Получить пользователей по возрастанию рейтинга Copy",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Ответ должен содержать код статуса 200 и данные в формате json\", function () {\r",
+                  "    pm.response.to.be.ok;    \r",
+                  "    pm.response.to.be.withBody;\r",
+                  "    pm.response.to.be.json;\r",
+                  "});\r",
+                  "\r",
+                  "pm.test(\"Количество пользователей должно быть 136\", function () {\r",
+                  "    var jsonData = pm.response.json();\r",
+                  "    pm.expect(jsonData.length, 'List length must be 136').to.eql(136);\r",
+                  "});\r",
+                  "\r",
+                  "pm.test(\"Рейтинг пользователей должен учитывать оценки\", function () {\r",
+                  "    const target = pm.response.json();\r",
+                  "    pm.expect(target[target.length-136].rating).to.equal(-1);\r",
+                  "    pm.expect(target[target.length-1].rating).to.equal(2);\r",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/admin/users?size=1000&asc=false",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "admin",
+                "users"
+              ],
+              "query": [
+                {
+                  "key": "size",
+                  "value": "1000"
+                },
+                {
+                  "key": "asc",
+                  "value": "false"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Получить пользователей по убыванию рейтинга",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Ответ должен содержать код статуса 200 и данные в формате json\", function () {\r",
+                  "    pm.response.to.be.ok;    \r",
+                  "    pm.response.to.be.withBody;\r",
+                  "    pm.response.to.be.json;\r",
+                  "});\r",
+                  "\r",
+                  "pm.test(\"Количество пользователей должно быть 136\", function () {\r",
+                  "    var jsonData = pm.response.json();\r",
+                  "    pm.expect(jsonData.length, 'List length must be 136').to.eql(136);\r",
+                  "});\r",
+                  "\r",
+                  "pm.test(\"Рейтинг пользователей должен учитывать оценки\", function () {\r",
+                  "    const target = pm.response.json();\r",
+                  "    pm.expect(target[target.length-136].rating).to.equal(2);\r",
+                  "    pm.expect(target[target.length-1].rating).to.equal(-1);\r",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/admin/users?size=1000&asc=true",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "admin",
+                "users"
+              ],
+              "query": [
+                {
+                  "key": "size",
+                  "value": "1000"
+                },
+                {
+                  "key": "asc",
+                  "value": "true"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Получить события с рейтингом по убыванию",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Ответ должен содержать код статуса 200 и данные в формате json\", function () {\r",
+                  "    pm.response.to.be.ok;    \r",
+                  "    pm.response.to.be.withBody;\r",
+                  "    pm.response.to.be.json;\r",
+                  "});\r",
+                  "\r",
+                  "pm.test(\"Количество событий должно быть 108\", function () {\r",
+                  "    var jsonData = pm.response.json();\r",
+                  "    pm.expect(jsonData.length, 'List length must be 108').to.eql(108);\r",
+                  "});\r",
+                  "\r",
+                  "pm.test(\"Рейтинг событий должен учитывать оценки\", function () {\r",
+                  "    const target = pm.response.json();\r",
+                  "    pm.expect(target[target.length-108].rating).to.equal(2);\r",
+                  "    pm.expect(target[target.length-1].rating).to.equal(-1);\r",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/admin/events?size=1000&asc=true",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "admin",
+                "events"
+              ],
+              "query": [
+                {
+                  "key": "size",
+                  "value": "1000"
+                },
+                {
+                  "key": "asc",
+                  "value": "true"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Получить события с рейтингом по возрастанию",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Ответ должен содержать код статуса 200 и данные в формате json\", function () {\r",
+                  "    pm.response.to.be.ok;    \r",
+                  "    pm.response.to.be.withBody;\r",
+                  "    pm.response.to.be.json;\r",
+                  "});\r",
+                  "\r",
+                  "pm.test(\"Количество событий должно быть 108\", function () {\r",
+                  "    var jsonData = pm.response.json();\r",
+                  "    pm.expect(jsonData.length, 'List length must be 108').to.eql(108);\r",
+                  "});\r",
+                  "\r",
+                  "pm.test(\"Рейтинг событий должен учитывать оценки\", function () {\r",
+                  "    const target = pm.response.json();\r",
+                  "    pm.expect(target[target.length-108].rating).to.equal(-1);\r",
+                  "    pm.expect(target[target.length-1].rating).to.equal(2);\r",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/admin/events?size=1000&asc=false",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "admin",
+                "events"
+              ],
+              "query": [
+                {
+                  "key": "size",
+                  "value": "1000"
+                },
+                {
+                  "key": "asc",
+                  "value": "false"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Изменить оценку на лайк событию 106 пользователем 138",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Ответ должен содержать код статуса 200 и данные в формате json\", function() {\r",
+                  "    pm.response.to.be.ok;\r",
+                  "    pm.response.to.be.withBody;\r",
+                  "    pm.response.to.be.json;\r",
+                  "});\r",
+                  "\r",
+                  "pm.test(\"Ответ должен содержать поля: userName, eventTitle, rating\", function () {\r",
+                  "    const target = pm.response.json();\r",
+                  "    pm.expect(target).to.have.property('userName');\r",
+                  "    pm.expect(target).to.have.property('eventTitle');\r",
+                  "    pm.expect(target).to.have.property('ratingType');\r",
+                  "});\r",
+                  "\r",
+                  "pm.test(\"Поле 'userName' должно иметь значение 'Sveta'\", function () {\r",
+                  "    var jsonData = pm.response.json();\r",
+                  "    pm.expect(jsonData).to.have.property('userName');\r",
+                  "    pm.expect(jsonData.userName, '\"userName\" must be \"Sveta\"').to.eql('Sveta');\r",
+                  "});\r",
+                  "\r",
+                  "pm.test(\"Поле 'eventTitle' должно иметь значение 'Event test1'\", function () {\r",
+                  "    var jsonData = pm.response.json();\r",
+                  "    pm.expect(jsonData).to.have.property('eventTitle');\r",
+                  "    pm.expect(jsonData.eventTitle, '\"eventTitle\" must be \"Event test1\"').to.eql('Event test1');\r",
+                  "});\r",
+                  "\r",
+                  "pm.test(\"Поле 'ratingType' должно иметь значение 'LIKE'\", function () {\r",
+                  "    var jsonData = pm.response.json();\r",
+                  "    pm.expect(jsonData).to.have.property('ratingType');\r",
+                  "    pm.expect(jsonData.ratingType, '\"ratingType\" must be \"LIKE\"').to.eql('LIKE');\r",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/users/:userId/events/:eventId/rating?isLike=true",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "users",
+                ":userId",
+                "events",
+                ":eventId",
+                "rating"
+              ],
+              "query": [
+                {
+                  "key": "isLike",
+                  "value": "true"
+                }
+              ],
+              "variable": [
+                {
+                  "key": "userId",
+                  "value": "138"
+                },
+                {
+                  "key": "eventId",
+                  "value": "106"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Получить пользователей по убыванию рейтинга после изменения оценки",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Ответ должен содержать код статуса 200 и данные в формате json\", function () {\r",
+                  "    pm.response.to.be.ok;    \r",
+                  "    pm.response.to.be.withBody;\r",
+                  "    pm.response.to.be.json;\r",
+                  "});\r",
+                  "\r",
+                  "pm.test(\"Количество пользователей должно быть 136\", function () {\r",
+                  "    var jsonData = pm.response.json();\r",
+                  "    pm.expect(jsonData.length, 'List length must be 136').to.eql(136);\r",
+                  "});\r",
+                  "\r",
+                  "pm.test(\"Рейтинг пользователей должен учитывать оценки\", function () {\r",
+                  "    const target = pm.response.json();\r",
+                  "    pm.expect(target[target.length-136].rating).to.equal(2);\r",
+                  "    pm.expect(target[target.length-1].rating).to.equal(-1);\r",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/admin/users?size=1000&asc=true",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "admin",
+                "users"
+              ],
+              "query": [
+                {
+                  "key": "size",
+                  "value": "1000"
+                },
+                {
+                  "key": "asc",
+                  "value": "true"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Получить события с рейтингом по убыванию после изменения оценки",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Ответ должен содержать код статуса 200 и данные в формате json\", function () {\r",
+                  "    pm.response.to.be.ok;    \r",
+                  "    pm.response.to.be.withBody;\r",
+                  "    pm.response.to.be.json;\r",
+                  "});\r",
+                  "\r",
+                  "pm.test(\"Количество событий должно быть 108\", function () {\r",
+                  "    var jsonData = pm.response.json();\r",
+                  "    pm.expect(jsonData.length, 'List length must be 108').to.eql(108);\r",
+                  "});\r",
+                  "\r",
+                  "pm.test(\"Рейтинг событий должен учитывать оценки\", function () {\r",
+                  "    const target = pm.response.json();\r",
+                  "    pm.expect(target[target.length-108].rating).to.equal(2);\r",
+                  "    pm.expect(target[target.length-1].rating).to.equal(-1);\r",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/admin/events?size=1000&asc=true",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "admin",
+                "events"
+              ],
+              "query": [
+                {
+                  "key": "size",
+                  "value": "1000"
+                },
+                {
+                  "key": "asc",
+                  "value": "true"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Удалить оценку событию 107 пользователем 138",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Ответ должен содержать код статуса 204\", function() {\r",
+                  "    pm.response.to.have.status(204);\r",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/users/:userId/events/:eventId/rating",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "users",
+                ":userId",
+                "events",
+                ":eventId",
+                "rating"
+              ],
+              "variable": [
+                {
+                  "key": "userId",
+                  "value": "138"
+                },
+                {
+                  "key": "eventId",
+                  "value": "107"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Получить пользователей по убыванию рейтинга после удаления оценки",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Ответ должен содержать код статуса 200 и данные в формате json\", function () {\r",
+                  "    pm.response.to.be.ok;    \r",
+                  "    pm.response.to.be.withBody;\r",
+                  "    pm.response.to.be.json;\r",
+                  "});\r",
+                  "\r",
+                  "pm.test(\"Количество пользователей должно быть 136\", function () {\r",
+                  "    var jsonData = pm.response.json();\r",
+                  "    pm.expect(jsonData.length, 'List length must be 136').to.eql(136);\r",
+                  "});\r",
+                  "\r",
+                  "pm.test(\"Рейтинг пользователей должен учитывать оценки\", function () {\r",
+                  "    const target = pm.response.json();\r",
+                  "    pm.expect(target[target.length-136].rating).to.equal(2);\r",
+                  "    pm.expect(target[target.length-1].rating).to.equal(-1);\r",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/admin/users?size=1000&asc=true",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "admin",
+                "users"
+              ],
+              "query": [
+                {
+                  "key": "size",
+                  "value": "1000"
+                },
+                {
+                  "key": "asc",
+                  "value": "true"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Получить событий с рейтингом по убыванию после удаления оценки",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Ответ должен содержать код статуса 200 и данные в формате json\", function () {\r",
+                  "    pm.response.to.be.ok;    \r",
+                  "    pm.response.to.be.withBody;\r",
+                  "    pm.response.to.be.json;\r",
+                  "});\r",
+                  "\r",
+                  "pm.test(\"Количество событий должно быть 108\", function () {\r",
+                  "    var jsonData = pm.response.json();\r",
+                  "    pm.expect(jsonData.length, 'List length must be 108').to.eql(108);\r",
+                  "});\r",
+                  "\r",
+                  "pm.test(\"Рейтинг событий должен учитывать оценки\", function () {\r",
+                  "    const target = pm.response.json();\r",
+                  "    pm.expect(target[target.length-108].rating).to.equal(2);\r",
+                  "    pm.expect(target[target.length-1].rating).to.equal(-1);\r",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/admin/events?size=1000&asc=true",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "admin",
+                "events"
+              ],
+              "query": [
+                {
+                  "key": "size",
+                  "value": "1000"
+                },
+                {
+                  "key": "asc",
+                  "value": "true"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Попытаться изменить удаленную оценку",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Ответ должен содержать код статуса 404 и данные в формате json\", function () {\r",
+                  "    pm.response.to.be.notFound;\r",
+                  "    pm.response.to.be.withBody;\r",
+                  "    pm.response.to.be.json;\r",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/users/:userId/events/:eventId/rating?isLike=true",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "users",
+                ":userId",
+                "events",
+                ":eventId",
+                "rating"
+              ],
+              "query": [
+                {
+                  "key": "isLike",
+                  "value": "true"
+                }
+              ],
+              "variable": [
+                {
+                  "key": "userId",
+                  "value": "138"
+                },
+                {
+                  "key": "eventId",
+                  "value": "107"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Получить событие 106 с рейтингом: 2",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Ответ должен содержать код статуса 200 и данные в формате json\", function () {\r",
+                  "    pm.response.to.be.ok;    \r",
+                  "    pm.response.to.be.withBody;\r",
+                  "    pm.response.to.be.json;\r",
+                  "});\r",
+                  "\r",
+                  "const target = pm.response.json();\r",
+                  "\r",
+                  "pm.test(\"Событие должно содержать поле: rating\", function () {\r",
+                  "    const target = pm.response.json();\r",
+                  "    pm.expect(target).to.have.property('rating');\r",
+                  "});\r",
+                  "\r",
+                  "pm.test(\"Поле 'rating' должно иметь значение 2\", function () {\r",
+                  "    var jsonData = pm.response.json();\r",
+                  "    pm.expect(jsonData).to.have.property('rating');\r",
+                  "    pm.expect(jsonData.rating, '\"rating\" must be 2').to.eql(2);\r",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/users/:userId/events/:eventId",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "users",
+                ":userId",
+                "events",
+                ":eventId"
+              ],
+              "variable": [
+                {
+                  "key": "userId",
+                  "value": "136"
+                },
+                {
+                  "key": "eventId",
+                  "value": "106"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Получить событие 107 с рейтингом: -1",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Ответ должен содержать код статуса 200 и данные в формате json\", function () {\r",
+                  "    pm.response.to.be.ok;    \r",
+                  "    pm.response.to.be.withBody;\r",
+                  "    pm.response.to.be.json;\r",
+                  "});\r",
+                  "\r",
+                  "const target = pm.response.json();\r",
+                  "\r",
+                  "pm.test(\"Событие должно содержать поле: rating\", function () {\r",
+                  "    const target = pm.response.json();\r",
+                  "    pm.expect(target).to.have.property('rating');\r",
+                  "});\r",
+                  "\r",
+                  "pm.test(\"Поле 'rating' должно иметь значение -1\", function () {\r",
+                  "    var jsonData = pm.response.json();\r",
+                  "    pm.expect(jsonData).to.have.property('rating');\r",
+                  "    pm.expect(jsonData.rating, '\"rating\" must be -1').to.eql(-1);\r",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/users/:userId/events/:eventId",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "users",
+                ":userId",
+                "events",
+                ":eventId"
+              ],
+              "variable": [
+                {
+                  "key": "userId",
+                  "value": "137"
+                },
+                {
+                  "key": "eventId",
+                  "value": "107"
+                }
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "localhost:8080"
+    }
+  ]
+}

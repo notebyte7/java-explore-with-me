@@ -54,12 +54,4 @@ public class EventUtil {
                     new IllegalArgumentException());
         }
     }
-
-    public static void validateEventInitiator(Long userId, Event event) {
-        if (!event.getInitiator().getId().equals(userId)) {
-            throw new ValidationException(
-                    "Пользователь" + userId + " не является инициатором события " + event.getId(),
-                    new IllegalArgumentException());
-        }
-    }
 }

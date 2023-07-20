@@ -7,6 +7,7 @@ import ru.practicum.exception.WrongStateArgumentException;
 import ru.practicum.model.event.Event;
 import ru.practicum.model.participationrequest.ParticipationRequest;
 import ru.practicum.model.participationrequest.ParticipationRequestStatus;
+import ru.practicum.util.RatingCalculator;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -25,7 +26,8 @@ public class EventMapper {
                 event.getEventDate().format(DateTimeFormatter.ofPattern(DATA_FORMAT)),
                 event.getPaid(),
                 getConfirmedRequestsCount(event.getRequests()),
-                UserMapper.toUserShortDto(event.getInitiator())
+                UserMapper.toUserShortDto(event.getInitiator()),
+                RatingCalculator.calculateRating(event.getRatings())
         );
     }
 
@@ -45,7 +47,8 @@ public class EventMapper {
                 event.getParticipantLimit(),
                 UserMapper.toUserShortDto(event.getInitiator()),
                 event.getState().toString(),
-                getConfirmedRequestsCount(event.getRequests())
+                getConfirmedRequestsCount(event.getRequests()),
+                RatingCalculator.calculateRating(event.getRatings())
         );
     }
 
