@@ -17,7 +17,7 @@ import static ru.practicum.util.Format.DATA_FORMAT;
 @Component
 @RequiredArgsConstructor
 public class StatsManager {
-    private final StatsClient statsClient = new StatsClient("http://localhost:9090");
+    private final StatsClient statsClient = new StatsClient("http://stats-service:9090");
 
     public void postHit(EndpointHitDto endpointHitDto) {
         statsClient.postEndpointHit(endpointHitDto);
