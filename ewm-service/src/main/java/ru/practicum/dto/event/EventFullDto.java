@@ -5,9 +5,6 @@ import lombok.experimental.FieldDefaults;
 import ru.practicum.dto.category.CategoryDto;
 import ru.practicum.dto.user.UserShortDto;
 import ru.practicum.model.location.Location;
-import ru.practicum.model.rating.Rating;
-
-import java.util.Set;
 
 @Getter
 @Setter

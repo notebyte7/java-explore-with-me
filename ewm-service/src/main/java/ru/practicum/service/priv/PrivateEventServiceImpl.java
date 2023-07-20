@@ -269,7 +269,7 @@ public class PrivateEventServiceImpl implements PrivateEventService {
                         .sorted(Comparator.comparing(EventShortDto::getRating))
                         .collect(Collectors.toList());
             }
-        } else if (eventShortDtoList.isEmpty()){
+        } else if (eventShortDtoList.isEmpty()) {
             return new ArrayList<>();
         } else {
             return eventShortDtoList;
