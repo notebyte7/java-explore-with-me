@@ -30,7 +30,7 @@ public class Compilation {
     @Column(name = "pinned", columnDefinition = "boolean default false")
     Boolean pinned;
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(
             name = "events_compilations",
             joinColumns = @JoinColumn(name = "compilation_id"),

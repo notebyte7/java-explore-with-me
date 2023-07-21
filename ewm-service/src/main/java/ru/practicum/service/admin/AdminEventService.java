@@ -13,7 +13,8 @@ public interface AdminEventService {
                                            String rangeStart,
                                            String rangeEnd,
                                            Integer from,
-                                           Integer size);
+                                           Integer size,
+                                           Boolean rate);
 
     EventFullDto patchEventById(Long eventId, UpdateEventRequest updateEventRequest);
 }

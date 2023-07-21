@@ -13,7 +13,7 @@ public class RequestUtil {
     public static void validateUserIsNotInitiator(Long userId, Event event) {
         if (event.getInitiator().getId().equals(userId)) {
             throw new ValidationException("Пользователь " + userId +
-                    " не инициатор события " + event.getId(),
+                    " инициатор события " + event.getId(),
                     new IllegalArgumentException());
         }
     }
