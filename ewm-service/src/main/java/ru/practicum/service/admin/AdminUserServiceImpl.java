@@ -62,10 +62,8 @@ public class AdminUserServiceImpl implements AdminUserService {
     }
 
     private void setUserRates(List<UserDto> userDtoList, List<Rating> rating) {
-        for (UserDto userDto : userDtoList) {
-            Set<Rating> userEventRatings = getUserEventRating(userDto.getId(), rating);
-            userDto.setRating(RatingCalculator.calculateRating(userEventRatings));
-        }
+        userDtoList.forEach(userDto -> userDto.setRating(RatingCalculator.
+                calculateRating(getUserEventRating(userDto.getId(), rating))));
     }
 
     private Set<Rating> getUserEventRating(Long userId, List<Rating> ratings) {
